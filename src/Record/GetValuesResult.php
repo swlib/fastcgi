@@ -1,9 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace Lisachenko\Protocol\FCGI\Record;
+namespace Swlib\FastCGI\Record;
 
-use Lisachenko\Protocol\FCGI;
-use Lisachenko\Protocol\FCGI\Record;
+use Swlib\FastCGI;
 
 /**
  * GetValues API
@@ -38,7 +37,7 @@ class GetValuesResult extends Params
     public function __construct(array $values = [])
     {
         parent::__construct($values);
-        $this->type = FCGI::GET_VALUES_RESULT;
+        $this->type = FastCGI::GET_VALUES_RESULT;
     }
 
 }

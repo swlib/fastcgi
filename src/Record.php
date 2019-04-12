@@ -1,11 +1,11 @@
 <?php declare(strict_types=1);
 
-namespace Lisachenko\Protocol\FCGI;
+namespace Swlib\FastCGI;
 
-use Lisachenko\Protocol\FCGI;
+use Swlib\FastCGI;
 
 /**
- * FCGI record.
+ * FastCGI record.
  *
  * @author Alexander.Lisachenko
  */
@@ -17,21 +17,21 @@ class Record
      *
      * @var int
      */
-    protected $version = FCGI::VERSION_1;
+    protected $version = FastCGI::VERSION_1;
 
     /**
      * Identifies the FastCGI record type, i.e. the general function that the record performs.
      *
      * @var int
      */
-    protected $type = FCGI::UNKNOWN_TYPE;
+    protected $type = FastCGI::UNKNOWN_TYPE;
 
     /**
      * Identifies the FastCGI request to which the record belongs.
      *
      * @var int
      */
-    protected $requestId = FCGI::NULL_REQUEST_ID;
+    protected $requestId = FastCGI::DEFAULT_REQUEST_ID;
 
     /**
      * Reserved byte for future proposes
@@ -85,9 +85,9 @@ class Record
             $self->contentLength,
             $self->paddingLength,
             $self->reserved
-        ] = array_values(unpack(FCGI::HEADER_FORMAT, $data));
+        ] = array_values(unpack(FastCGI::HEADER_FORMAT, $data));
 
-        $payload = substr($data, FCGI::HEADER_LEN);
+        $payload = substr($data, FastCGI::HEADER_LEN);
         self::unpackPayload($self, $payload);
         if (get_called_class() !== __CLASS__ && $self->contentLength > 0) {
             static::unpackPayload($self, $payload);

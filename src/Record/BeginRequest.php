@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace Lisachenko\Protocol\FCGI\Record;
+namespace Swlib\FastCGI\Record;
 
-use Lisachenko\Protocol\FCGI;
-use Lisachenko\Protocol\FCGI\Record;
+use Swlib\FastCGI;
+use Swlib\FastCGI\Record;
 
 /**
  * The Web server sends a FCGI_BEGIN_REQUEST record to start a request.
@@ -22,7 +22,7 @@ class BeginRequest extends Record
      *
      * @var int
      */
-    protected $role = FCGI::UNKNOWN_ROLE;
+    protected $role = FastCGI::UNKNOWN_ROLE;
 
     /**
      * The flags component contains a bit that controls connection shutdown.
@@ -43,9 +43,9 @@ class BeginRequest extends Record
      */
     protected $reserved1;
 
-    public function __construct(int $role = FCGI::UNKNOWN_ROLE, int $flags = 0, string $reserved = '')
+    public function __construct(int $role = FastCGI::UNKNOWN_ROLE, int $flags = 0, string $reserved = '')
     {
-        $this->type = FCGI::BEGIN_REQUEST;
+        $this->type = FastCGI::BEGIN_REQUEST;
         $this->role = $role;
         $this->flags = $flags;
         $this->reserved1 = $reserved;
@@ -104,4 +104,5 @@ class BeginRequest extends Record
             $this->reserved1
         );
     }
+
 }

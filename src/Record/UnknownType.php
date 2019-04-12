@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace Lisachenko\Protocol\FCGI\Record;
+namespace Swlib\FastCGI\Record;
 
-use Lisachenko\Protocol\FCGI;
-use Lisachenko\Protocol\FCGI\Record;
+use Swlib\FastCGI;
+use Swlib\FastCGI\Record;
 
 /**
  * Record for unknown queries
@@ -34,7 +34,7 @@ class UnknownType extends Record
 
     public function __construct(int $type = 0, string $reserved = '')
     {
-        $this->type = FCGI::UNKNOWN_TYPE;
+        $this->type = FastCGI::UNKNOWN_TYPE;
         $this->type1 = $type;
         $this->reserved1 = $reserved;
         $this->setContentData($this->packPayload());

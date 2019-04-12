@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace Lisachenko\Protocol\FCGI\Record;
+namespace Swlib\FastCGI\Record;
 
-use Lisachenko\Protocol\FCGI;
-use Lisachenko\Protocol\FCGI\Record;
+use Swlib\FastCGI;
+use Swlib\FastCGI\Record;
 
 /**
  * Stdout binary stream
@@ -17,7 +17,7 @@ class Stdout extends Record
 
     public function __construct(string $contentData = '')
     {
-        $this->type = FCGI::STDOUT;
+        $this->type = FastCGI::STDOUT;
         $this->setContentData($contentData);
     }
 

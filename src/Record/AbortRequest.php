@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace Lisachenko\Protocol\FCGI\Record;
+namespace Swlib\FastCGI\Record;
 
-use Lisachenko\Protocol\FCGI;
-use Lisachenko\Protocol\FCGI\Record;
+use Swlib\FastCGI;
+use Swlib\FastCGI\Record;
 
 /**
  * The Web server sends a FCGI_ABORT_REQUEST record to abort a request
@@ -15,7 +15,8 @@ class AbortRequest extends Record
 
     public function __construct(int $requestId = 0)
     {
-        $this->type = FCGI::ABORT_REQUEST;
+        $this->type = FastCGI::ABORT_REQUEST;
         $this->setRequestId($requestId);
     }
+
 }

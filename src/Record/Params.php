@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace Lisachenko\Protocol\FCGI\Record;
+namespace Swlib\FastCGI\Record;
 
-use Lisachenko\Protocol\FCGI;
-use Lisachenko\Protocol\FCGI\Record;
+use Swlib\FastCGI;
+use Swlib\FastCGI\Record;
 
 /**
  * Params request record
@@ -27,7 +27,7 @@ class Params extends Record
      */
     public function __construct(array $values = [])
     {
-        $this->type = FCGI::PARAMS;
+        $this->type = FastCGI::PARAMS;
         $this->values = $values;
         $this->setContentData($this->packPayload());
     }
@@ -88,7 +88,7 @@ class Params extends Record
         $payload = '';
         foreach ($this->values as $nameData => $valueData) {
             $nameLength = strlen($nameData);
-            $valueLength = strlen((string) $valueData);
+            $valueLength = strlen((string)$valueData);
             $isLongName = $nameLength > 127;
             $isLongValue = $valueLength > 127;
             $formatParts = [

@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace Lisachenko\Protocol\FCGI\Record;
+namespace Swlib\FastCGI\Record;
 
-use Lisachenko\Protocol\FCGI;
-use Lisachenko\Protocol\FCGI\Record;
+use Swlib\FastCGI;
+use Swlib\FastCGI\Record;
 
 /**
  * The application sends a FCGI_END_REQUEST record to terminate a request, either because the application
@@ -36,7 +36,7 @@ class EndRequest extends Record
      *
      * @var int
      */
-    protected $protocolStatus = FCGI::REQUEST_COMPLETE;
+    protected $protocolStatus = FastCGI::REQUEST_COMPLETE;
 
     /**
      * Reserved data, 3 bytes maximum
@@ -45,9 +45,10 @@ class EndRequest extends Record
      */
     protected $reserved1;
 
-    public function __construct(int $protocolStatus = FCGI::REQUEST_COMPLETE, int $appStatus = 0, string $reserved = '')
-    {
-        $this->type = FCGI::END_REQUEST;
+    public function __construct(
+        int $protocolStatus = FastCGI::REQUEST_COMPLETE, int $appStatus = 0, string $reserved = ''
+    ) {
+        $this->type = FastCGI::END_REQUEST;
         $this->protocolStatus = $protocolStatus;
         $this->appStatus = $appStatus;
         $this->reserved1 = $reserved;

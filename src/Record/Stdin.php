@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace Lisachenko\Protocol\FCGI\Record;
+namespace Swlib\FastCGI\Record;
 
-use Lisachenko\Protocol\FCGI;
-use Lisachenko\Protocol\FCGI\Record;
+use Swlib\FastCGI;
+use Swlib\FastCGI\Record;
 
 /**
  * Stdin binary stream
@@ -17,7 +17,7 @@ class Stdin extends Record
 
     public function __construct(string $contentData = '')
     {
-        $this->type = FCGI::STDIN;
+        $this->type = FastCGI::STDIN;
         $this->setContentData($contentData);
     }
 
